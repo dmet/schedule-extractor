@@ -1,0 +1,51 @@
+{
+  "$schema": "<https://json-schema.org/draft/2020-12/schema>",
+  "title": "ScheduleGroundTruth",
+  "type": "object",
+  "required": ["source_pdf", "tables"],
+  "properties": {
+    "source_pdf": { "type": "string" },
+    "notes": { "type": "string" },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["page_range", "header_tree", "rows"],
+        "properties": {
+          "page_range": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 1 },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "header_tree": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/headerNode" }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "headerNode": {
+      "type": "object",
+      "required": ["text", "col_start", "col_end"],
+      "properties": {
+        "text": { "type": "string" },
+        "col_start": { "type": "integer", "minimum": 0 },
+        "col_end": { "type": "integer", "minimum": 0 },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/headerNode" }
+        }
+      }
+    }
+  }
+}
