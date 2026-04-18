@@ -38,4 +38,4 @@ schedule-extract path/to/schedule.pdf
 
 ## License
 
-TBD. TATR is MIT; pypdfium2 is Apache-2.0 / BSD-3 dual.
+Apache-2.0. See `LICENSE`.
