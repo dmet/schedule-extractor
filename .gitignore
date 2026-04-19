@@ -10,5 +10,5 @@ dist/
 *.pt
 *.pth
 checkpoints/
-eval/data/
+eval/data/*.pdf
 .DS_Store
